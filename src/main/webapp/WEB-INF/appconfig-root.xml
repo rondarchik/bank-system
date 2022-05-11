@@ -6,8 +6,11 @@
 
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <import resource="appconfig-data.xml"/>
     <import resource="appconfig-security.xml"/>
 
     <context:component-scan base-package="com.victoria.app.core.*"/>
 
+    <context:property-placeholder ignore-unresolvable="true" order="1" location="classpath:database.properties"/>
+    <context:property-placeholder order="2" location="classpath:application.properties"/>
 </beans>

@@ -9,12 +9,8 @@
 
     <http>
         <intercept-url pattern="/"
-                       access="hasAnyRole(T(com.victoria.app.core.model.Role).CLIENT, T(com.victoria.app.core.model.Role).OPERATOR,
-                        T(com.victoria.app.core.model.Role).MANAGER,T(com.victoria.app.core.model.Role).THIRD_PARTY_SPECIALIST,
-                        T(com.victoria.app.core.model.Role).ADMIN)"/>
-        <form-login login-page="/login" default-target-url="/welcome" always-use-default-target="true"
-                    authentication-failure-url="/login?error"
-                    username-parameter="username" password-parameter="password"/>
+                       access="hasAnyRole(T(com.victoria.app.core.model.Role).CLIENT, T(com.victoria.app.core.model.Role).OPERATOR, T(com.victoria.app.core.model.Role).MANAGER,T(com.victoria.app.core.model.Role).THIRD_PARTY_SPECIALIST, T(com.victoria.app.core.model.Role).ADMIN)"/>
+        <form-login login-page="/login" default-target-url="/welcome" always-use-default-target="true" authentication-failure-url="/login?error" username-parameter="username" password-parameter="password"/>
     </http>
 
     <authentication-manager alias="authenticationManager">
