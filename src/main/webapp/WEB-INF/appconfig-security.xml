@@ -15,7 +15,7 @@
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">
-            <password-encoder ref="encoder"/>
+<!--            <password-encoder ref="encoder"/>-->
         </authentication-provider>
     </authentication-manager>
 
