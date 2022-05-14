@@ -1,23 +1,51 @@
 package com.victoria.app.web.controller;
 
 import com.victoria.app.core.exceptions.RoleNotFoundException;
+import com.victoria.app.core.exceptions.UserAlreadyExistsException;
+import com.victoria.app.core.model.Client;
 import com.victoria.app.core.model.Role;
 import com.victoria.app.core.model.User;
+import com.victoria.app.core.service.BankService;
+import com.victoria.app.core.service.ClientService;
+import com.victoria.app.core.service.CompanyService;
+import com.victoria.app.core.service.UserService;
+import com.victoria.app.web.dto.UserClientDto;
+import com.victoria.app.web.dto.mapper.UserClientDtoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.Set;
 
 @Controller
 public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private ClientService clientService;
+
+    @Autowired
+    private BankService bankService;
+
+    @Autowired
+    private CompanyService companyService;
+
+    @Autowired
+    private UserClientDtoMapper userClientDtoMapper;
+
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
@@ -56,8 +84,34 @@ public class UserController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("banks", bankService.findAll());
+        model.addAttribute("companies", companyService.findAll());
+
+        model.addAttribute("user", new UserClientDto());
         return "registration";
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registration(@ModelAttribute("user") @Valid UserClientDto userClientDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        try {
+            User newUser = userClientDtoMapper.mapToUser(userClientDto);
+            newUser.setActive(false);
+
+            Client newClient = userClientDtoMapper.mapToClient(userClientDto);
+            newClient.setUser(newUser);
+
+            newUser = userService.save(newUser);
+            newClient = clientService.save(newClient);
+
+            model.addAttribute("successRegistration", "Successful Registration !!! Wait for manager approve.");
+            return "registration";
+        } catch (UserAlreadyExistsException userAlreadyExistsException) {
+            model.addAttribute("userExists", "User already exists !!! Please,try again.");
+            return "registration";
+        }
     }
 
 }

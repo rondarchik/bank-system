@@ -1,32 +1,39 @@
 package com.victoria.app.web.dto;
 
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class UserClientDto {
 
+    @NotBlank
     private String login;
+    @NotBlank
     private String password;
 
+    @NotBlank
     private String surname;
+    @NotBlank
     private String name;
+    @NotBlank
     private String lastname;
+    @NotBlank
     private String passportId;
+    @NotBlank
     private String identityNumber;
+    @NotBlank
     private String telephoneNumber;
+
+    @NotBlank
+    @Email
     private String email;
 
-    public UserClientDto() {
-    }
+    @NotBlank
+    private String company;
+    @NotBlank
+    private String bank;
 
-    public UserClientDto(String login, String password, String surname, String name, String lastname, String passportId, String identityNumber, String telephoneNumber, String email) {
-        this.login = login;
-        this.password = password;
-        this.surname = surname;
-        this.name = name;
-        this.lastname = lastname;
-        this.passportId = passportId;
-        this.identityNumber = identityNumber;
-        this.telephoneNumber = telephoneNumber;
-        this.email = email;
+    public UserClientDto() {
     }
 
     public String getLogin() {
@@ -99,5 +106,21 @@ public class UserClientDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
     }
 }
