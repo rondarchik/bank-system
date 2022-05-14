@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS clients
     company_id INT NOT NULL,
 
     FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (company_id) REFERENCES companies (id),
+    FOREIGN KEY (company_id) REFERENCES companies (id)
 
     )
     ENGINE = InnoDB;

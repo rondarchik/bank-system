@@ -1,14 +1,14 @@
 package com.victoria.app.web.controller;
 
+import com.victoria.app.core.exceptions.ManagerNotFoundException;
 import com.victoria.app.core.exceptions.RoleNotFoundException;
 import com.victoria.app.core.exceptions.UserAlreadyExistsException;
+import com.victoria.app.core.exceptions.UserNotFoundException;
 import com.victoria.app.core.model.Client;
+import com.victoria.app.core.model.Manager;
 import com.victoria.app.core.model.Role;
 import com.victoria.app.core.model.User;
-import com.victoria.app.core.service.BankService;
-import com.victoria.app.core.service.ClientService;
-import com.victoria.app.core.service.CompanyService;
-import com.victoria.app.core.service.UserService;
+import com.victoria.app.core.service.*;
 import com.victoria.app.web.dto.UserClientDto;
 import com.victoria.app.web.dto.mapper.UserClientDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ManagerService managerService;
 
     @Autowired
     private ClientService clientService;
@@ -114,4 +117,14 @@ public class UserController {
         }
     }
 
+
+    @RequestMapping(value = {"/welcome_manager"}, method = RequestMethod.GET)
+    public String welcomeManager(Authentication authentication, Model model) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        Manager manager = managerService.findByUser(user).orElseThrow(ManagerNotFoundException::new);;
+
+        model.addAttribute("user", user);
+        model.addAttribute("nonActiveClients", userService.getAllNonActiveUserClientsForManager(manager));
+        return "welcome_manager";
+    }
 }
