@@ -24,6 +24,12 @@ public class Bank {
     @OneToMany(mappedBy = "bank")
     private List<Company> companies;
 
+    @OneToMany(mappedBy = "bank")
+    private List<ClientAccount> clientAccounts;
+
+    @OneToMany(mappedBy = "bank")
+    private List<CompanyAccount> companyAccounts;
+
     public Bank() {
     }
 
@@ -65,6 +71,22 @@ public class Bank {
 
     public void setCompanies(List<Company> companies) {
         this.companies = companies;
+    }
+
+    public List<ClientAccount> getClientAccounts() {
+        return clientAccounts;
+    }
+
+    public void setClientAccounts(List<ClientAccount> clientAccounts) {
+        this.clientAccounts = clientAccounts;
+    }
+
+    public List<CompanyAccount> getCompanyAccounts() {
+        return companyAccounts;
+    }
+
+    public void setCompanyAccounts(List<CompanyAccount> companyAccounts) {
+        this.companyAccounts = companyAccounts;
     }
 
     @Override

@@ -45,6 +45,9 @@ public class Client {
             inverseJoinColumns = @JoinColumn(name = "bank_id"))
     private List<Bank> banks;
 
+    @OneToMany(mappedBy = "client")
+    private List<ClientAccount> clientAccounts;
+
     public Client() {
     }
 
@@ -134,5 +137,13 @@ public class Client {
 
     public void setBanks(List<Bank> banks) {
         this.banks = banks;
+    }
+
+    public List<ClientAccount> getClientAccounts() {
+        return clientAccounts;
+    }
+
+    public void setClientAccounts(List<ClientAccount> clientAccounts) {
+        this.clientAccounts = clientAccounts;
     }
 }

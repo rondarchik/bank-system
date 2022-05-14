@@ -119,7 +119,7 @@ public class UserController {
 
 
     @RequestMapping(value = {"/welcome_manager"}, method = RequestMethod.GET)
-    public String welcomeManager(Authentication authentication, Model model) {
+    public String welcomeManagerUser(Authentication authentication, Model model) {
         User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
         Manager manager = managerService.findByUser(user).orElseThrow(ManagerNotFoundException::new);;
 

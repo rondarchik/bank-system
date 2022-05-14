@@ -31,6 +31,9 @@ public class Company {
     @Column(name = "address")
     private String address;
 
+    @OneToMany(mappedBy = "company")
+    private List<CompanyAccount> companyAccounts;
+
     public Company() {
     }
 
@@ -88,6 +91,14 @@ public class Company {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<CompanyAccount> getCompanyAccounts() {
+        return companyAccounts;
+    }
+
+    public void setCompanyAccounts(List<CompanyAccount> companyAccounts) {
+        this.companyAccounts = companyAccounts;
     }
 
     @Override
