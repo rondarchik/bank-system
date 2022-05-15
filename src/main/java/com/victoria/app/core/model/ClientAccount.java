@@ -25,6 +25,12 @@ public class ClientAccount {
     @Column(name = "currency_type")
     private CurrencyType currencyType;
 
+    @Column(name = "frozen")
+    private boolean frozen;
+
+    @Column(name = "blocked")
+    private boolean active;
+
     public ClientAccount() {
     }
 
@@ -66,5 +72,21 @@ public class ClientAccount {
 
     public void setCurrencyType(CurrencyType currencyType) {
         this.currencyType = currencyType;
+    }
+
+    public boolean isFrozen() {
+        return frozen;
+    }
+
+    public void setFrozen(boolean frozen) {
+        this.frozen = frozen;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

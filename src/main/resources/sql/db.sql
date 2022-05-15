@@ -105,8 +105,59 @@ CREATE TABLE IF NOT EXISTS client_accounts
     bank_id INT NOT NULL,
     balance INT NOT NULL,
     currency_type VARCHAR(255) NOT NULL,
+    frozen   BOOLEAN      NOT NULL,
+    blocked   BOOLEAN      NOT NULL,
 
     FOREIGN KEY (client_id) REFERENCES clients (id),
     FOREIGN KEY (bank_id) REFERENCES banks (id)
     )
     ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS remmitance
+(
+    id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(255) NOT NULL,
+    from_id INT NOT NULL,
+    to_id INT NOT NULL,
+    amount INT NOT NULL,
+    currency_type VARCHAR(255) NOT NULL
+    )
+    ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS action_logs
+(
+    id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    log_text VARCHAR(255) NOT NULL
+    )
+    ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS credits
+(
+    id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    account_id INT NOT NULL,
+    percent INT NOT NULL,
+    amount INT NOT NULL,
+    remaining_months INT NOT NULL,
+    approved   BOOLEAN      NOT NULL,
+    start_date        DATETIME     NOT NULL,
+
+    FOREIGN KEY (account_id) REFERENCES client_accounts (id)
+    )
+    ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS installments
+(
+    id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    account_id INT NOT NULL,
+    approved   BOOLEAN      NOT NULL,
+    amount INT NOT NULL,
+    remaining_months INT NOT NULL,
+    start_date        DATETIME     NOT NULL,
+
+    FOREIGN KEY (account_id) REFERENCES client_accounts (id)
+)
+    ENGINE = InnoDB;
+

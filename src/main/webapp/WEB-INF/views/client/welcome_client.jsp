@@ -5,7 +5,7 @@
         <div id="home" class="section">
             <div id="home_about" class="box">
                 <br>
-                <h2>Welcome, admin</h2>
+                <h2>Welcome, client</h2>
 
             </div>
 
