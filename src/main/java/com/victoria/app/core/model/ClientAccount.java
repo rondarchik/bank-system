@@ -1,6 +1,7 @@
 package com.victoria.app.core.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "client_accounts")
@@ -24,6 +25,12 @@ public class ClientAccount {
     @Enumerated(EnumType.STRING)
     @Column(name = "currency_type")
     private CurrencyType currencyType;
+
+    @OneToMany(mappedBy = "clientAccount")
+    private List<Credit> credits;
+
+    @OneToMany(mappedBy = "clientAccount")
+    private List<Installment> installments;
 
     @Column(name = "frozen")
     private boolean frozen;
@@ -88,5 +95,21 @@ public class ClientAccount {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public List<Credit> getCredits() {
+        return credits;
+    }
+
+    public void setCredits(List<Credit> credits) {
+        this.credits = credits;
+    }
+
+    public List<Installment> getInstallments() {
+        return installments;
+    }
+
+    public void setInstallments(List<Installment> installments) {
+        this.installments = installments;
     }
 }
