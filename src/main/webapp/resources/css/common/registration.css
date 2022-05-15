@@ -1,6 +1,6 @@
 body {
     /*background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(1.jfif);*/
-    background: url("/resources/pictures/background/books.jpg") fixed;
+    background: url("/resources/pictures/background/bank.jpg") fixed;
     -webkit-background-size: cover;
     background-size: cover;
     font-family: sans-serif;
