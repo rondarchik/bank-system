@@ -6,6 +6,7 @@ import com.victoria.app.core.model.Client;
 import com.victoria.app.core.model.Manager;
 import com.victoria.app.core.model.Role;
 import com.victoria.app.core.model.User;
+import com.victoria.app.core.service.ActionLogService;
 import com.victoria.app.core.service.ClientService;
 import com.victoria.app.core.service.ManagerService;
 import com.victoria.app.core.service.UserService;
@@ -29,6 +30,9 @@ public class ManagerController {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private ActionLogService actionLogService;
 
     @RequestMapping("/{userId}/activate")
     public String activateUser(@PathVariable Long userId) {

@@ -32,6 +32,9 @@ import java.util.Set;
 public class UserController {
 
     @Autowired
+    private ActionLogService actionLogService;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
@@ -126,5 +129,25 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("nonActiveClients", userService.getAllNonActiveUserClientsForManager(manager));
         return "welcome_manager";
+    }
+
+    @RequestMapping(value = {"/welcome_client"}, method = RequestMethod.GET)
+    public String welcomeClient(Authentication authentication, Model model) {
+        return "welcome_client";
+    }
+
+    @RequestMapping(value = {"/welcome_admin"}, method = RequestMethod.GET)
+    public String welcomeAdmin(Authentication authentication, Model model) {
+        return "welcome_admin";
+    }
+
+    @RequestMapping(value = {"/welcome_operator"}, method = RequestMethod.GET)
+    public String welcomeOperator(Authentication authentication, Model model) {
+        return "welcome_operator";
+    }
+
+    @RequestMapping(value = {"/welcome_specialist"}, method = RequestMethod.GET)
+    public String welcomeSpecialist(Authentication authentication, Model model) {
+        return "welcome_specialist";
     }
 }

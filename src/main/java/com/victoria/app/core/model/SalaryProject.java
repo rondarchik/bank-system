@@ -1,6 +1,5 @@
 package com.victoria.app.core.model;
 
-
 import javax.persistence.*;
 
 @Entity

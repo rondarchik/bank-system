@@ -9,8 +9,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AdminController {
 
-    @RequestMapping(value = {"/welcome_admin"}, method = RequestMethod.GET)
-    public String welcomeAdmin(Authentication authentication, Model model) {
-        return "welcome_admin";
-    }
+
 }
