@@ -12,7 +12,7 @@ public class Installment {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "account_id")
     private ClientAccount clientAccount;
 
     @Column(name = "amount")

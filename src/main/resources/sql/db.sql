@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS clients
     name VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     passport_id VARCHAR(255) NOT NULL,
-    identity_number INT NOT NULL,
+    identity_number VARCHAR(255) NOT NULL,
     telephone VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     company_id INT NOT NULL,

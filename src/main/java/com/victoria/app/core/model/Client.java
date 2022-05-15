@@ -2,6 +2,7 @@ package com.victoria.app.core.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "clients")
@@ -45,7 +46,7 @@ public class Client {
             inverseJoinColumns = @JoinColumn(name = "bank_id"))
     private List<Bank> banks;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private List<ClientAccount> clientAccounts;
 
     public Client() {
@@ -145,5 +146,18 @@ public class Client {
 
     public void setClientAccounts(List<ClientAccount> clientAccounts) {
         this.clientAccounts = clientAccounts;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(surname, client.surname) && Objects.equals(name, client.name) && Objects.equals(lastname, client.lastname) && Objects.equals(passportId, client.passportId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(surname, name, lastname, passportId);
     }
 }

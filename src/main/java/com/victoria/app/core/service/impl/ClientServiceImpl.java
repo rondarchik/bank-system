@@ -22,4 +22,9 @@ public class ClientServiceImpl implements ClientService {
     public Client getClientByUser(User user) {
         return clientRepository.getClientByUser(user);
     }
+
+    @Override
+    public Client getClientById(Long id) {
+        return clientRepository.getClientById(id);
+    }
 }

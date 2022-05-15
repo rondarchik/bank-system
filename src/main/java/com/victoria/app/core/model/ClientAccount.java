@@ -26,10 +26,10 @@ public class ClientAccount {
     @Column(name = "currency_type")
     private CurrencyType currencyType;
 
-    @OneToMany(mappedBy = "clientAccount")
+    @OneToMany(mappedBy = "clientAccount", fetch = FetchType.EAGER)
     private List<Credit> credits;
 
-    @OneToMany(mappedBy = "clientAccount")
+    @OneToMany(mappedBy = "clientAccount", fetch = FetchType.EAGER)
     private List<Installment> installments;
 
     @Column(name = "frozen")

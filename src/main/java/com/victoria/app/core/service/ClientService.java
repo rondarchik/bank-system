@@ -11,4 +11,6 @@ public interface ClientService {
     Client save(Client client);
 
     Client getClientByUser(User user);
+
+    Client getClientById(Long id);
 }

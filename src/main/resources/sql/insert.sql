@@ -32,8 +32,8 @@ VALUES (1, 1, 'OOO', 'ISSOFT', '1013125934', 'Partizansky avenue 1, Minsk, 22007
        (10, 3, 'OOO', 'SoftTeco', '101425998', 'Partizansky avenue 10, Minsk, 220070, Belarus');
 
 INSERT INTO clients
-VALUES (1, 1, 'Dovgun', 'Victoria', 'Alexandrovna', 'AB2718892992', 100, '+375292889911', 'rondarchik@proton.com', 1),
-       (2, 2, 'Dovgun', 'Elena', 'Alexandrovna', 'AB2718890143', 101, '+3752953368882', 'elennaaa@proton.com', 1);
+VALUES (1, 1, 'Dovgun', 'Victoria', 'Alexandrovna', 'AB2718892992', '100', '+375292889911', 'rondarchik@proton.com', 1),
+       (2, 2, 'Dovgun', 'Elena', 'Alexandrovna', 'AB2718890143', '101', '+3752953368882', 'elennaaa@proton.com', 1);
 
 
 INSERT INTO client_bank

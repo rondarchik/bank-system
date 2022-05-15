@@ -12,4 +12,10 @@
         <put-attribute name="title" value="welcome client"/>
         <put-attribute name="body" value="/WEB-INF/views/client/welcome_client.jsp"/>
     </definition>
+
+    <definition name="client_bank_page" extends="default">
+        <put-attribute name="title" value="client bank page"/>
+        <put-attribute name="body" value="/WEB-INF/views/client/client_bank_page.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -4,10 +4,7 @@ import com.victoria.app.core.exceptions.ManagerNotFoundException;
 import com.victoria.app.core.exceptions.RoleNotFoundException;
 import com.victoria.app.core.exceptions.UserAlreadyExistsException;
 import com.victoria.app.core.exceptions.UserNotFoundException;
-import com.victoria.app.core.model.Client;
-import com.victoria.app.core.model.Manager;
-import com.victoria.app.core.model.Role;
-import com.victoria.app.core.model.User;
+import com.victoria.app.core.model.*;
 import com.victoria.app.core.service.*;
 import com.victoria.app.web.dto.UserClientDto;
 import com.victoria.app.web.dto.mapper.UserClientDtoMapper;
@@ -26,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -113,7 +111,7 @@ public class UserController {
             newClient = clientService.save(newClient);
 
             model.addAttribute("successRegistration", "Successful Registration !!! Wait for manager approve.");
-            return "registration";
+            return "registrationSuccess";
         } catch (UserAlreadyExistsException userAlreadyExistsException) {
             model.addAttribute("userExists", "User already exists !!! Please,try again.");
             return "registration";
@@ -133,6 +131,13 @@ public class UserController {
 
     @RequestMapping(value = {"/welcome_client"}, method = RequestMethod.GET)
     public String welcomeClient(Authentication authentication, Model model) {
+        User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
+        Client client = clientService.getClientByUser(user);
+        List<Bank> banks = bankService.getAllForClient(client);
+
+        model.addAttribute("user", user);
+        model.addAttribute("client", client);
+        model.addAttribute("banks", banks);
         return "welcome_client";
     }
 

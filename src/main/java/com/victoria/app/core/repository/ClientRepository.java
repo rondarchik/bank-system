@@ -9,4 +9,6 @@ import java.util.List;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
     Client getClientByUser(User user);
+
+    Client getClientById(Long id);
 }
