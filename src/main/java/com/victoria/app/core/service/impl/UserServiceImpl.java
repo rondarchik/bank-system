@@ -9,6 +9,7 @@ import com.victoria.app.core.repository.ClientRepository;
 import com.victoria.app.core.repository.UserRepository;
 import com.victoria.app.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     public User save(User user) {
         boolean isUserNew = user.getId() == null;
@@ -33,6 +37,10 @@ public class UserServiceImpl implements UserService {
 
         if (oldUser != null && (isUserNew || !oldUser.getId().equals(user.getId()))) {
             throw new UserAlreadyExistsException();
+        }
+
+        if (isUserNew) {
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         }
 
         return userRepository.save(user);

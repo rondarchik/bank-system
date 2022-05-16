@@ -15,13 +15,26 @@
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">
-<!--            <password-encoder ref="encoder"/>-->
+            <password-encoder ref="encoder"/>
         </authentication-provider>
     </authentication-manager>
 
     <beans:bean id="userDetailsServiceImpl"
                 class="com.victoria.app.core.service.impl.UserDetailsServiceImpl"/>
 
+
+
+<!--    BCrypt implements OpenBSD-style Blowfish password hashing using the scheme described in "A Future-Adaptable Password Scheme" by Niels Provos and David Mazieres.-->
+<!--    This password hashing system tries to thwart off-line password cracking using a computationally-intensive hashing algorithm, based on Bruce Schneier's Blowfish cipher. The work factor of the algorithm is parameterised, so it can be increased as computers get faster.-->
+<!--    Usage is really simple. To hash a password for the first time, call the hashpw method with a random salt, like this:-->
+<!--    String pw_hash = BCrypt.hashpw(plain_password, BCrypt.gensalt());-->
+<!--    To check whether a plaintext password matches one that has been hashed previously, use the checkpw method:-->
+<!--    if (BCrypt.checkpw(candidate_password, stored_hash)) System.out.println("It matches"); else System.out.println("It does not match");-->
+<!--    The gensalt() method takes an optional parameter (log_rounds) that determines the computational complexity of the hashing:-->
+<!--    String strong_salt = BCrypt.gensalt(10) String stronger_salt = BCrypt.gensalt(12)-->
+<!--    The amount of work increases exponentially (2**log_rounds), so each increment is twice as much work. The default log_rounds is 10, and the valid range is 4 to 31.-->
+<!--    Author:-->
+<!--    Damien Miller-->
     <beans:bean id="encoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="11"/>

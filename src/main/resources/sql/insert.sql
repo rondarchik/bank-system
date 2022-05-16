@@ -1,12 +1,12 @@
 INSERT INTO users
-VALUES (1, 'test1', '12345678', true , 'CLIENT'),
-       (2, 'test2', '12345678', false , 'CLIENT'),
-       (3, 'test3', '12345678', true, 'OPERATOR'),
-       (4, 'test4', '12345678', true, 'MANAGER'),
-       (5, 'test5', '12345678', true, 'THIRD_PARTY_SPECIALIST'),
-       (6, 'test6', '12345678', true , 'ADMIN'),
-       (7, 'test7', '12345678', true , 'MANAGER'),
-       (8, 'test8', '12345678', true , 'MANAGER');
+VALUES (1, 'test1', '$2a$11$4jSYmoqJ4PUvBLmFpQd.ouxhlxisrpi165/dwU6zHFszRvOcWgWGG', true , 'CLIENT'),
+       (2, 'test2', '$2a$11$4jSYmoqJ4PUvBLmFpQd.ouxhlxisrpi165/dwU6zHFszRvOcWgWGG', false , 'CLIENT'),
+       (3, 'test3', '$2a$11$4jSYmoqJ4PUvBLmFpQd.ouxhlxisrpi165/dwU6zHFszRvOcWgWGG', true, 'OPERATOR'),
+       (4, 'test4', '$2a$11$4jSYmoqJ4PUvBLmFpQd.ouxhlxisrpi165/dwU6zHFszRvOcWgWGG', true, 'MANAGER'),
+       (5, 'test5', '$2a$11$4jSYmoqJ4PUvBLmFpQd.ouxhlxisrpi165/dwU6zHFszRvOcWgWGG', true, 'THIRD_PARTY_SPECIALIST'),
+       (6, 'test6', '$2a$11$4jSYmoqJ4PUvBLmFpQd.ouxhlxisrpi165/dwU6zHFszRvOcWgWGG', true , 'ADMIN'),
+       (7, 'test7', '$2a$11$4jSYmoqJ4PUvBLmFpQd.ouxhlxisrpi165/dwU6zHFszRvOcWgWGG', true , 'MANAGER'),
+       (8, 'test8', '$2a$11$4jSYmoqJ4PUvBLmFpQd.ouxhlxisrpi165/dwU6zHFszRvOcWgWGG', true , 'MANAGER');
 
 INSERT INTO banks
 VALUES (1, 'PRIOR BANK'),
