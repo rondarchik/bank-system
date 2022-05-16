@@ -161,3 +161,16 @@ CREATE TABLE IF NOT EXISTS installments
 )
     ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS salary_project_requests
+(
+    id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    client_id INT NOT NULL,
+    spec_approved   BOOLEAN      NOT NULL,
+    operator_approved   BOOLEAN      NOT NULL,
+    salary INT,
+
+    FOREIGN KEY (project_id) REFERENCES salary_projects (id)
+    )
+    ENGINE = InnoDB;
+

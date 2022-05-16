@@ -16,7 +16,7 @@
             <table border="2">
                 <tr class="table-header">
                     <td>Name</td>
-                    <td>Open</td>
+                    <td>Action</td>
                 </tr>
                 <c:forEach var="bank" items="${banks}">
                     <tr>

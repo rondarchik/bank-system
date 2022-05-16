@@ -42,7 +42,16 @@ VALUES (1, 1),
        (2, 1);
 
 INSERT INTO salary_projects
-VALUES (1, 1, 'Salary safety');
+VALUES (1, 1, 'Salary safety'),
+       (2, 2, 'Salary safety'),
+       (3, 3, 'Salary safety'),
+       (4, 4, 'Salary safety'),
+       (5, 5, 'Salary safety'),
+       (6, 6, 'Salary safety'),
+       (7, 7, 'Salary safety'),
+       (8, 8, 'Salary safety'),
+       (9, 9, 'Salary safety'),
+       (10, 10, 'Salary safety');
 
 INSERT INTO company_accounts
 VALUES (1, 1, 1, 1531, 'USD'),

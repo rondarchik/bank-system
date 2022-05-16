@@ -1,6 +1,7 @@
 package com.victoria.app.core.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "salary_projects")
@@ -16,6 +17,9 @@ public class SalaryProject {
     @OneToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @OneToMany(mappedBy = "salaryProject", fetch = FetchType.EAGER)
+    private List<SalaryProjectRequest> salaryProjectRequests;
 
     public SalaryProject() {
     }

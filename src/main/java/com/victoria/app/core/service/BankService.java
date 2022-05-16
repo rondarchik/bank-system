@@ -12,4 +12,6 @@ public interface BankService {
 
     List<Bank> getAllForClient(Client client);
 
+    Bank getBankById(long id);
+
 }

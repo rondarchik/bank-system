@@ -10,7 +10,6 @@ public class ActionLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name = "log_text")
     private String logText;
 

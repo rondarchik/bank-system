@@ -12,6 +12,7 @@
 <body>
 <div id="home_about" class="box">
     <h1>Successful Registration !!! Please, wait for manager approve.</h1>
+    <h2>Your manager(s): ${managerName}</h2>
 </div>
 </body>
 </html>

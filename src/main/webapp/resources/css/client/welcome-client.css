@@ -30,11 +30,11 @@ td {
 }
 
 body {
+    background: url("/resources/pictures/background/bank.jpg") fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     color: #ddd;
-
-    background: url("/resources/pictures/background/bank.jpg") fixed;
 }
 
 table {

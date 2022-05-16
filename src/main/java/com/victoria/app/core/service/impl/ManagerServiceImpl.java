@@ -1,5 +1,6 @@
 package com.victoria.app.core.service.impl;
 
+import com.victoria.app.core.model.Bank;
 import com.victoria.app.core.model.Manager;
 import com.victoria.app.core.model.User;
 import com.victoria.app.core.repository.ManagerRepository;
@@ -24,5 +25,10 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public Optional<Manager> findByUser(User user) {
         return managerRepository.findByUser(user);
+    }
+
+    @Override
+    public List<Manager> findByBank(Bank bank) {
+        return managerRepository.findByBank(bank);
     }
 }

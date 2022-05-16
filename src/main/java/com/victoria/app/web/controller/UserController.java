@@ -111,6 +111,7 @@ public class UserController {
             newClient = clientService.save(newClient);
 
             model.addAttribute("successRegistration", "Successful Registration !!! Wait for manager approve.");
+            model.addAttribute("managerName", printAllManagers(managerService.findByBank(newClient.getBanks().get(0))));
             return "registrationSuccess";
         } catch (UserAlreadyExistsException userAlreadyExistsException) {
             model.addAttribute("userExists", "User already exists !!! Please,try again.");
@@ -118,11 +119,19 @@ public class UserController {
         }
     }
 
+    private String printAllManagers(List<Manager> managers) {
+        StringBuilder result = new StringBuilder();
+        for (Manager manager : managers) {
+            result.append(manager.getUser().getLogin()).append(", ");
+        }
+        return result.substring(0, result.toString().length() - 2) ;
+    }
+
 
     @RequestMapping(value = {"/welcome_manager"}, method = RequestMethod.GET)
     public String welcomeManagerUser(Authentication authentication, Model model) {
         User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
-        Manager manager = managerService.findByUser(user).orElseThrow(ManagerNotFoundException::new);;
+        Manager manager = managerService.findByUser(user).orElseThrow(ManagerNotFoundException::new);
 
         model.addAttribute("user", user);
         model.addAttribute("nonActiveClients", userService.getAllNonActiveUserClientsForManager(manager));

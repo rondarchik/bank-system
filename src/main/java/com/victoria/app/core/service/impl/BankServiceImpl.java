@@ -31,5 +31,10 @@ public class BankServiceImpl implements BankService {
         return bankRepository.findAll().stream().filter(bank -> bank.getClients().contains(client)).collect(Collectors.toList());
     }
 
+    @Override
+    public Bank getBankById(long id) {
+        return bankRepository.getBankById(id);
+    }
+
 
 }
