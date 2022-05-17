@@ -5,4 +5,8 @@ import com.victoria.app.core.model.SalaryProject;
 
 public interface SalaryProjectService {
     SalaryProject findByCompany(Company company);
+
+    SalaryProject findById(Long id);
+
+
 }

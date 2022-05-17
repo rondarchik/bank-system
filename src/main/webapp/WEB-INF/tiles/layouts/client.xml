@@ -18,4 +18,9 @@
         <put-attribute name="body" value="/WEB-INF/views/client/client_bank_page.jsp"/>
     </definition>
 
+    <definition name="salaryProjectRequestRegistrationSuccess" extends="default">
+        <put-attribute name="title" value="Salary Project Request Registration Success"/>
+        <put-attribute name="body" value="/WEB-INF/views/client/salaryProjectRequestRegistrationSuccess.jsp"/>
+    </definition>
+
 </tiles-definitions>

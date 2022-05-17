@@ -12,4 +12,10 @@
         <put-attribute name="title" value="welcome specialist"/>
         <put-attribute name="body" value="/WEB-INF/views/specialist/welcome_specialist.jsp"/>
     </definition>
+
+    <definition name="salaryProjectRequestSuccessBySpecialist" extends="default">
+        <put-attribute name="title" value="welcome specialist"/>
+        <put-attribute name="body" value="/WEB-INF/views/specialist/salaryProjectRequestSuccessBySpecialist.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -8,4 +8,6 @@ public interface SalaryProjectRepository extends JpaRepository<SalaryProject, Lo
 
     SalaryProject findByCompany(Company company);
 
+    SalaryProject findById(Long id);
+
 }

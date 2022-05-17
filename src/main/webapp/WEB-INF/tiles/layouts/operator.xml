@@ -12,4 +12,9 @@
         <put-attribute name="title" value="welcome operator"/>
         <put-attribute name="body" value="/WEB-INF/views/operator/welcome_operator.jsp"/>
     </definition>
+
+    <definition name="salaryProjectRequestSuccessByOperator" extends="default">
+        <put-attribute name="title" value="welcome operator"/>
+        <put-attribute name="body" value="/WEB-INF/views/operator/salaryProjectRequestSuccessByOperator.jsp"/>
+    </definition>
 </tiles-definitions>

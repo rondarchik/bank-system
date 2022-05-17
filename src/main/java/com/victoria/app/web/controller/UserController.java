@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -46,6 +47,9 @@ public class UserController {
 
     @Autowired
     private CompanyService companyService;
+
+    @Autowired
+    private SalaryProjectRequestService salaryProjectRequestService;
 
     @Autowired
     private UserClientDtoMapper userClientDtoMapper;
@@ -100,6 +104,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
+
         try {
             User newUser = userClientDtoMapper.mapToUser(userClientDto);
             newUser.setActive(false);
@@ -130,6 +135,9 @@ public class UserController {
 
     @RequestMapping(value = {"/welcome_manager"}, method = RequestMethod.GET)
     public String welcomeManagerUser(Authentication authentication, Model model) {
+        if (authentication == null) {
+            return "redirect:/logout";
+        }
         User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
         Manager manager = managerService.findByUser(user).orElseThrow(ManagerNotFoundException::new);
 
@@ -140,6 +148,10 @@ public class UserController {
 
     @RequestMapping(value = {"/welcome_client"}, method = RequestMethod.GET)
     public String welcomeClient(Authentication authentication, Model model) {
+        if (authentication == null) {
+            return "redirect:/logout";
+        }
+
         User user = userService.findByLogin(authentication.getName()).orElseThrow(UserNotFoundException::new);
         Client client = clientService.getClientByUser(user);
         List<Bank> banks = bankService.getAllForClient(client);
@@ -152,16 +164,42 @@ public class UserController {
 
     @RequestMapping(value = {"/welcome_admin"}, method = RequestMethod.GET)
     public String welcomeAdmin(Authentication authentication, Model model) {
+        if (authentication == null) {
+            return "redirect:/logout";
+        }
         return "welcome_admin";
     }
 
     @RequestMapping(value = {"/welcome_operator"}, method = RequestMethod.GET)
     public String welcomeOperator(Authentication authentication, Model model) {
+        if (authentication == null) {
+            return "redirect:/logout";
+        }
+
+        List<SalaryProjectRequest> salaryProjectRequests = salaryProjectRequestService.findAll()
+                .stream()
+                .filter(salaryProjectRequest -> !salaryProjectRequest.isOperatorApproved())
+                .filter(SalaryProjectRequest::isSpecApproved)
+                .collect(Collectors.toList());
+
+        model.addAttribute("salaryProjectRequests", salaryProjectRequests);
         return "welcome_operator";
     }
 
     @RequestMapping(value = {"/welcome_specialist"}, method = RequestMethod.GET)
     public String welcomeSpecialist(Authentication authentication, Model model) {
+        if (authentication == null) {
+            return "redirect:/logout";
+        }
+
+        List<SalaryProjectRequest> salaryProjectRequests = salaryProjectRequestService.findAll()
+                .stream()
+                .filter(salaryProjectRequest -> !salaryProjectRequest.isOperatorApproved())
+                .filter(salaryProjectRequest -> !salaryProjectRequest.isSpecApproved())
+                .collect(Collectors.toList());
+
+        model.addAttribute("salaryProjectRequests", salaryProjectRequests);
+
         return "welcome_specialist";
     }
 }

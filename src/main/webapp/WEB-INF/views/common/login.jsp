@@ -31,25 +31,5 @@
     <h4><a href="<c:url value="/registration"/>">Create an account</a></h4>
 </div>
 </form:form>
-
-
-<%--<form:form method="POST" action="/test">--%>
-<%--    <div class="form">--%>
-<%--        <h1>test</h1>--%>
-
-<%--        <div class="input-form">--%>
-<%--            <input name="test" type="text" placeholder="test" autofocus="true"/>--%>
-<%--        </div>--%>
-
-<%--        <div class="input-form">--%>
-<%--            <input type="submit" value="test">--%>
-<%--        </div>--%>
-
-<%--    </div>--%>
-<%--</form:form>--%>
-
-
-
-
 </body>
 </html>

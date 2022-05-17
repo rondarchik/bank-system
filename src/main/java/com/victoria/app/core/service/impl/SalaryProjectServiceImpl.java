@@ -17,4 +17,9 @@ public class SalaryProjectServiceImpl implements SalaryProjectService {
     public SalaryProject findByCompany(Company company) {
         return salaryProjectRepository.findByCompany(company);
     }
+
+    @Override
+    public SalaryProject findById(Long id) {
+        return salaryProjectRepository.findById(id);
+    }
 }

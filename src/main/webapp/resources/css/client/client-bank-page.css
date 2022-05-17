@@ -1,0 +1,19 @@
+body {
+    background: url("/resources/pictures/background/bank.jpg") fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    font-family: sans-serif;
+    zoom: 1.4;
+}
+
+#home_about {
+    /*background: rgba(0, 0, 0, .6);*/
+    background: #26527C;
+    opacity: 0.8;
+    width: 500px;
+    height: 610px
+}
+
+.div-1 {
+    background-color: #ABBAEA;
+}

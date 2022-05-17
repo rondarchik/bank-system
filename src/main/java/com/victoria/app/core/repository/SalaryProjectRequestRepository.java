@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SalaryProjectRequestRepository extends JpaRepository<SalaryProjectRequest, Long> {
 
     SalaryProjectRequest findByClientId(long clientId);
+
+    SalaryProjectRequest findById(long id);
 }

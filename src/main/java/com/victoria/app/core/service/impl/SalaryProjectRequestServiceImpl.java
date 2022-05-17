@@ -6,6 +6,8 @@ import com.victoria.app.core.service.SalaryProjectRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SalaryProjectRequestServiceImpl implements SalaryProjectRequestService {
 
@@ -15,5 +17,20 @@ public class SalaryProjectRequestServiceImpl implements SalaryProjectRequestServ
     @Override
     public SalaryProjectRequest findByClientId(long clientId) {
         return salaryProjectRequestRepository.findByClientId(clientId);
+    }
+
+    @Override
+    public SalaryProjectRequest findById(long id) {
+        return salaryProjectRequestRepository.findById(id);
+    }
+
+    @Override
+    public List<SalaryProjectRequest> findAll() {
+        return salaryProjectRequestRepository.findAll();
+    }
+
+    @Override
+    public SalaryProjectRequest save(SalaryProjectRequest salaryProjectRequest) {
+        return salaryProjectRequestRepository.save(salaryProjectRequest);
     }
 }
