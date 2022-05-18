@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -143,6 +144,8 @@ public class UserController {
 
         model.addAttribute("user", user);
         model.addAttribute("nonActiveClients", userService.getAllNonActiveUserClientsForManager(manager));
+
+        actionLogService.save(new ActionLog("Manager " + authentication.getName() + " is authorized.", new Date()));
         return "welcome_manager";
     }
 
@@ -159,6 +162,8 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("client", client);
         model.addAttribute("banks", banks);
+
+        actionLogService.save(new ActionLog("Client " + authentication.getName() + " is authorized.", new Date()));
         return "welcome_client";
     }
 
@@ -167,6 +172,9 @@ public class UserController {
         if (authentication == null) {
             return "redirect:/logout";
         }
+
+        model.addAttribute("actions", actionLogService.getAll());
+        actionLogService.save(new ActionLog("Admin " + authentication.getName() + " is authorized.", new Date()));
         return "welcome_admin";
     }
 
@@ -183,6 +191,7 @@ public class UserController {
                 .collect(Collectors.toList());
 
         model.addAttribute("salaryProjectRequests", salaryProjectRequests);
+        actionLogService.save(new ActionLog("Operator " + authentication.getName() + " is authorized.", new Date()));
         return "welcome_operator";
     }
 
@@ -199,7 +208,7 @@ public class UserController {
                 .collect(Collectors.toList());
 
         model.addAttribute("salaryProjectRequests", salaryProjectRequests);
-
+       actionLogService.save(new ActionLog("Specialist " + authentication.getName()+ " is authorized.",new Date()));
         return "welcome_specialist";
     }
 }

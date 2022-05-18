@@ -1,6 +1,7 @@
 package com.victoria.app.web.controller;
 
 import com.victoria.app.core.model.SalaryProjectRequest;
+import com.victoria.app.core.service.ActionLogService;
 import com.victoria.app.core.service.SalaryProjectRequestService;
 import com.victoria.app.core.service.SalaryProjectService;
 import com.victoria.app.web.dto.mapper.SalaryProjectRequestDtoMapper;
@@ -17,6 +18,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("salaryProject/")
 public class SalaryProjectController {
+
+    @Autowired
+    private ActionLogService actionLogService;
 
     @Autowired
     private SalaryProjectService salaryProjectService;

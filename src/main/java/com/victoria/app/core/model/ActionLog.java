@@ -1,6 +1,7 @@
 package com.victoria.app.core.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "action_logs")
@@ -13,7 +14,15 @@ public class ActionLog {
     @Column(name = "log_text")
     private String logText;
 
+    @Column(name = "date")
+    private Date date;
+
     public ActionLog() {
+    }
+
+    public ActionLog(String logText, Date date) {
+        this.logText = logText;
+        this.date = date;
     }
 
     public Long getId() {
@@ -30,5 +39,13 @@ public class ActionLog {
 
     public void setLogText(String logText) {
         this.logText = logText;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

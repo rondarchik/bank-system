@@ -129,7 +129,8 @@ CREATE TABLE IF NOT EXISTS remmitance
 CREATE TABLE IF NOT EXISTS action_logs
 (
     id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    log_text VARCHAR(255) NOT NULL
+    log_text VARCHAR(255) NOT NULL,
+    date        DATETIME     NOT NULL
     )
     ENGINE = InnoDB;
 
