@@ -47,4 +47,14 @@ public class ClientAccountController {
         clientAccountService.save(clientAccount);
         return "redirect:/client/" + clientId + "/banks/" + bankId;
     }
+
+
+    @RequestMapping("/{clientAccountId}")
+    public String getCredits(@PathVariable Long clientAccountId) {
+       ClientAccount clientAccount = clientAccountService.getById(clientAccountId);
+
+
+
+        return "clientAccountPage";
+    }
 }

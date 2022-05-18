@@ -32,4 +32,10 @@
         <put-attribute name="title" value="accountIsFrozen"/>
         <put-attribute name="body" value="/WEB-INF/views/client/accountIsFrozen.jsp"/>
     </definition>
+
+    <definition name="clientAccountPage" extends="default">
+        <put-attribute name="title" value="clientAccountPage"/>
+        <put-attribute name="body" value="/WEB-INF/views/client/clientAccountPage.jsp"/>
+    </definition>
+
 </tiles-definitions>

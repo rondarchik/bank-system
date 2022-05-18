@@ -67,6 +67,7 @@
                         <td>CurrencyType</td>
                         <td>freeze/unfreeze</td>
                         <td>block/unblock</td>
+                        <td>go to credits/installments</td>
                     </tr>
                     <c:forEach var="clientAccount" items="${clientAccounts}">
                         <tr>
@@ -105,6 +106,12 @@
                                                class="get-button colorTwo">
                                     </c:otherwise>
                                 </c:choose>
+                            </td>
+                            <td>
+                                <input type="button" value="Go"
+                                       onclick="location.href='<c:url
+                                               value="/clientAccount/${clientAccount.id}"/>'"
+                                       class="get-button colorTwo">
                             </td>
                         </tr>
                     </c:forEach>
