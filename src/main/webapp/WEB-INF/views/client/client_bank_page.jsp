@@ -23,7 +23,7 @@
                         <div class="div-1">OPERATOR must approve your request after SPECIALIST's filling your documents.</div>
                     </c:if>
                     <c:if test = "${isOperatorApproved && isSpecApproved}">
-                        <div class="div-1">Your Salary Project is working!!!!</div>
+                        <div class="div-1">Your Salary Project is working!!!! Your Salary is ${salaryProjectRequestDto.salary}</div>
                     </c:if>
                 </c:when>
                 <c:otherwise>
