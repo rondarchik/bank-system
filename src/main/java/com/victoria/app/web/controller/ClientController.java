@@ -24,6 +24,9 @@ public class ClientController {
     private ClientService clientService;
 
     @Autowired
+    private ClientAccountService clientAccountService;
+
+    @Autowired
     private BankService bankService;
 
     @Autowired
@@ -61,6 +64,8 @@ public class ClientController {
         model.addAttribute("bank", bank);
         model.addAttribute("salaryProject", salaryProject);
         model.addAttribute("isClientBankCorrectForSalaryProject", isClientBankCorrectForSalaryProject(client, bankId));
+
+        model.addAttribute("clientAccounts", clientAccountService.findAllByClientAndBank(client,bank));
         return "client_bank_page";
     }
 

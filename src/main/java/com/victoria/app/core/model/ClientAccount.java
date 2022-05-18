@@ -36,7 +36,7 @@ public class ClientAccount {
     private boolean frozen;
 
     @Column(name = "blocked")
-    private boolean active;
+    private boolean blocked;
 
     public ClientAccount() {
     }
@@ -89,12 +89,12 @@ public class ClientAccount {
         this.frozen = frozen;
     }
 
-    public boolean isActive() {
-        return active;
+    public boolean isBlocked() {
+        return blocked;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
 
     public List<Credit> getCredits() {

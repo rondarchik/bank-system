@@ -11,34 +11,42 @@
             </div>
         </div>
     </div>
-    <h2>Salary Project Requests:</h2>
-    <table border="2">
-        <tr class="table-header">
-            <td class="id">Id</td>
-            <td>Client Id</td>
-            <td>Salary Project Name</td>
-            <td>Salary</td>
-            <td>Submit</td>
-        </tr>
-        <c:forEach var="salaryProjectRequest" items="${salaryProjectRequests}">
-            <form:form method="post" modelAttribute="salaryProjectRequest" action="/specialist/submitSalaryProjectRequest/${salaryProjectRequest.id}">
-            <tr>
-                <td>${salaryProjectRequest.id}</td>
-                <td>${salaryProjectRequest.clientId}</td>
-                <td>${salaryProjectRequest.salaryProject.name}</td>
-                <td>
-                    <div class="input-form">
-                        <input type="text" name="salary" value="${salaryProjectRequest.salary}"</input>
-                    </div>
-                </td>
-                <td>
-                    <div class="input-form">
-                        <input type="submit" value="Submit"/>
-                    </div>
-                </td>
-                </form:form>
-            </tr>
-        </c:forEach>
-    </table>
+    <c:choose>
+        <c:when test="${empty clientAccounts}">
+            Salary Project Requests are submitted!!!
+        </c:when>
+        <c:otherwise>
+            <h2>Salary Project Requests:</h2>
+            <table border="2">
+                <tr class="table-header">
+                    <td class="id">Id</td>
+                    <td>Client Id</td>
+                    <td>Salary Project Name</td>
+                    <td>Salary</td>
+                    <td>Submit</td>
+                </tr>
+                <c:forEach var="salaryProjectRequest" items="${salaryProjectRequests}">
+                    <form:form method="post" modelAttribute="salaryProjectRequest" action="/specialist/submitSalaryProjectRequest/${salaryProjectRequest.id}">
+                        <tr>
+                        <td>${salaryProjectRequest.id}</td>
+                        <td>${salaryProjectRequest.clientId}</td>
+                        <td>${salaryProjectRequest.salaryProject.name}</td>
+                        <td>
+                            <div class="input-form">
+                                <input type="text" name="salary" value="${salaryProjectRequest.salary}"</input>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-form">
+                                <input type="submit" value="Submit"/>
+                            </div>
+                        </td>
+                    </form:form>
+                    </tr>
+                </c:forEach>
+            </table>
+
+        </c:otherwise>
+    </c:choose>
 </div>
 

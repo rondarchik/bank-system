@@ -12,23 +12,31 @@
             </div>
         </div>
     </div>
-    <h2>Not Approved Salary Project Requests:</h2>
-    <table border="2">
-        <tr class="table-header">
-            <td class="id">Id</td>
-            <td>clientId</td>
-            <td>Approve</td>
-        </tr>
-        <c:forEach var="salaryProjectRequest" items="${salaryProjectRequests}">
-            <tr>
-                <td>${salaryProjectRequest.id}</td>
-                <td>${salaryProjectRequest.clientId}</td>
-                <td>
-                    <input type="button" value="Activate"
-                           onclick="location.href='<c:url value="/operator/submitSalaryProjectRequest/${salaryProjectRequest.id}"/>'"
-                           class="get-button colorTwo">
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+
+    <c:choose>
+        <c:when test="${empty salaryProjectRequests}">
+            All Salary Project Requests are approved!!!
+        </c:when>
+        <c:otherwise>
+            <h2>Not Approved Salary Project Requests:</h2>
+            <table border="2">
+                <tr class="table-header">
+                    <td class="id">Id</td>
+                    <td>clientId</td>
+                    <td>Approve</td>
+                </tr>
+                <c:forEach var="salaryProjectRequest" items="${salaryProjectRequests}">
+                    <tr>
+                        <td>${salaryProjectRequest.id}</td>
+                        <td>${salaryProjectRequest.clientId}</td>
+                        <td>
+                            <input type="button" value="Activate"
+                                   onclick="location.href='<c:url value="/operator/submitSalaryProjectRequest/${salaryProjectRequest.id}"/>'"
+                                   class="get-button colorTwo">
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:otherwise>
+    </c:choose>
 </div>
