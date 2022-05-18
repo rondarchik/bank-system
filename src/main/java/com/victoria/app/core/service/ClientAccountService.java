@@ -10,4 +10,9 @@ public interface ClientAccountService {
 
     List<ClientAccount> findAllByClientAndBank(Client client, Bank bank);
 
+    ClientAccount getById(Long id);
+
+    ClientAccount save(ClientAccount clientAccount);
+
+    ClientAccount getNewClientAccount(Bank bank, Client client);
 }

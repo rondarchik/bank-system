@@ -9,4 +9,8 @@ import java.util.List;
 
 public interface ClientAccountRepository extends JpaRepository<ClientAccount, Long> {
     List<ClientAccount> findAllByClientAndBank(Client client, Bank bank);
+
+    ClientAccount getById(Long id);
+
+    ClientAccount save(ClientAccount clientAccount);
 }

@@ -208,7 +208,7 @@ public class UserController {
                 .collect(Collectors.toList());
 
         model.addAttribute("salaryProjectRequests", salaryProjectRequests);
-       actionLogService.save(new ActionLog("Specialist " + authentication.getName()+ " is authorized.",new Date()));
+        actionLogService.save(new ActionLog("Specialist " + authentication.getName() + " is authorized.", new Date()));
         return "welcome_specialist";
     }
 }

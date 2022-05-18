@@ -1,6 +1,8 @@
 package com.victoria.app.core.service;
 
+import com.victoria.app.core.model.Bank;
 import com.victoria.app.core.model.Client;
+import com.victoria.app.core.model.ClientAccount;
 import com.victoria.app.core.model.User;
 
 import java.util.List;

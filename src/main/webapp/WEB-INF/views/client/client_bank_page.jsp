@@ -26,7 +26,8 @@
                         </c:if>
                         <c:if test="${isOperatorApproved && isSpecApproved}">
                             <div class="div-1">Your Salary Project is working!!!! Your Salary
-                                is ${salaryProjectRequestDto.salary}</div>
+                                is ${salaryProjectRequestDto.salary} BYN.
+                            </div>
                         </c:if>
                     </c:when>
                     <c:otherwise>
@@ -51,13 +52,13 @@
         </c:otherwise>
     </c:choose>
 
+    <h2>Your accounts:</h2>
     <div class="div-2">
         <c:choose>
             <c:when test="${empty clientAccounts}">
                 You don't have any account. Please, feel fre to create it.
             </c:when>
             <c:otherwise>
-                <h2>Your accounts:</h2>
                 <table border="2">
                     <tr class="table-header">
                         <td class="id">Id</td>
@@ -77,12 +78,14 @@
                                 <c:choose>
                                     <c:when test="${clientAccount.frozen}">
                                         <input type="button" value="Unfreeze"
-                                               onclick="location.href='<c:url value="/client/${clientAccount.id}/unfreeze" />'"
+                                               onclick="location.href='<c:url
+                                                       value="/client/${clientAccount.id}/unfreeze"/>'"
                                                class="get-button colorTwo">
                                     </c:when>
                                     <c:otherwise>
                                         <input type="button" value="Freeze"
-                                               onclick="location.href='<c:url value="/client/${clientAccount.id}/freeze" />'"
+                                               onclick="location.href='<c:url
+                                                       value="/client/${clientAccount.id}/freeze"/>'"
                                                class="get-button colorTwo">
                                     </c:otherwise>
                                 </c:choose>
@@ -91,18 +94,18 @@
                                 <c:choose>
                                     <c:when test="${clientAccount.blocked}">
                                         <input type="button" value="Unblock"
-                                               onclick="location.href='<c:url value="/client/${clientAccount.id}/unblock" />'"
+                                               onclick="location.href='<c:url
+                                                       value="/client/${clientAccount.id}/unblock"/>'"
                                                class="get-button colorTwo">
                                     </c:when>
                                     <c:otherwise>
                                         <input type="button" value="Block"
-                                               onclick="location.href='<c:url value="/client/${clientAccount.id}/block" />'"
+                                               onclick="location.href='<c:url
+                                                       value="/client/${clientAccount.id}/block"/>'"
                                                class="get-button colorTwo">
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-
-
                         </tr>
                     </c:forEach>
                 </table>
@@ -110,6 +113,57 @@
             </c:otherwise>
         </c:choose>
     </div>
+    <h1>Client account creation:</h1>
+    <div class="div-3">
+        <div class="form">
+            <form:form method="post" modelAttribute="newClientAccount"
+                       action="/clientAccount/create/${client.id}/${bank.id}">
+                <div class="input-form">
+                    <label for="currencyType">Currency Type: </label>
+                    <form:select path="currencyType">
+                        <form:options items="${CurrencyType.values()}"/>
+                    </form:select>
+                    <form:errors path="currencyType"/>
+                </div>
+                <div class="input-form">
+                    <input type="submit" value="Submit"/>
+                </div>
+
+            </form:form>
+        </div>
+    </div>
+
+    <h1>Сash withdrawal:</h1>
+    <div class="div-4">
+        <div class="form">
+            <form:form method="post" modelAttribute="cashWithdrawalDto" action="/account/client/${client.id}/bank/${bank.id}">
+                <div class="input-form">
+                    <label for="accountId">Account Id: </label>
+                    <form:input path="accountId" id="accountId" placeholder="Account Id"/>
+                    <form:errors path="accountId"/>
+                </div>
+
+                <div class="input-form">
+                    <label for="amount">Amount: </label>
+                    <form:input path="amount" id="amount" placeholder="Amount"/>
+                    <form:errors path="amount"/>
+                </div>
+
+                <div class="input-form">
+                    <label for="currencyType">Currency Type: </label>
+                    <form:select path="currencyType">
+                        <form:options items="${CurrencyType.values()}"/>
+                    </form:select>
+                    <form:errors path="currencyType"/>
+                </div>
+
+                <div class="input-form">
+                    <input type="submit" value="Submit"/>
+                </div>
+            </form:form>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

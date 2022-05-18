@@ -23,4 +23,13 @@
         <put-attribute name="body" value="/WEB-INF/views/client/salaryProjectRequestRegistrationSuccess.jsp"/>
     </definition>
 
+    <definition name="notEnoughMoney" extends="default">
+        <put-attribute name="title" value="notEnoughMoney"/>
+        <put-attribute name="body" value="/WEB-INF/views/client/notEnoughMoney.jsp"/>
+    </definition>
+
+    <definition name="accountIsFrozen" extends="default">
+        <put-attribute name="title" value="accountIsFrozen"/>
+        <put-attribute name="body" value="/WEB-INF/views/client/accountIsFrozen.jsp"/>
+    </definition>
 </tiles-definitions>

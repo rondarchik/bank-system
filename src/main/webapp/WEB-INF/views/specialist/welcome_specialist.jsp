@@ -12,7 +12,7 @@
         </div>
     </div>
     <c:choose>
-        <c:when test="${empty clientAccounts}">
+        <c:when test="${empty salaryProjectRequests}">
             All Salary Project Requests are submitted!!!
         </c:when>
         <c:otherwise>
