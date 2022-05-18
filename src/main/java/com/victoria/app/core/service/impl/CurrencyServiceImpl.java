@@ -27,7 +27,7 @@ public class CurrencyServiceImpl implements CurrencyService {
         return (int) amountInBYN;
     }
 
-
+    @Override
     public float toBYN(CurrencyType from, int amount) {
         if (from == CurrencyType.EUR) {
             return amount * conversionEUR;

@@ -164,6 +164,44 @@
         </div>
     </div>
 
+    <h1>Money transfer:</h1>
+    <div class="div-4">
+        <div class="form">
+            <form:form method="post" modelAttribute="remittanceDto" action="/account/remittance/client/${client.id}/bank/${bank.id}">
+                <div class="input-form">
+                    <label for="accountIdFrom">From Account Id: </label>
+                    <form:input path="accountIdFrom" id="accountIdFrom" placeholder="From Account Id"/>
+                    <form:errors path="accountIdFrom"/>
+                </div>
+
+                <div class="input-form">
+                    <label for="accountIdTo">From Account Id: </label>
+                    <form:input path="accountIdTo" id="accountIdTo" placeholder="account Id To"/>
+                    <form:errors path="accountIdTo"/>
+                </div>
+
+                <div class="input-form">
+                    <label for="amount">Amount: </label>
+                    <form:input path="amount" id="amount" placeholder="Amount"/>
+                    <form:errors path="amount"/>
+                </div>
+
+                <div class="input-form">
+                    <label for="currencyType">Currency Type:</label>
+                    <form:select path="currencyType">
+                        <form:options items="${CurrencyType.values()}"/>
+                    </form:select>
+                    <form:errors path="currencyType"/>
+                </div>
+
+                <div class="input-form">
+                    <input type="submit" value="Submit"/>
+                </div>
+            </form:form>
+        </div>
+    </div>
+<br><br><br>
+
 </div>
 </body>
 </html>

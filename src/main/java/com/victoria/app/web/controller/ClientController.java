@@ -2,6 +2,7 @@ package com.victoria.app.web.controller;
 
 import com.victoria.app.core.model.*;
 import com.victoria.app.core.service.*;
+import com.victoria.app.web.dto.RemittanceDto;
 import com.victoria.app.web.dto.SalaryProjectRequestDto;
 import com.victoria.app.web.dto.mapper.SalaryProjectRequestDtoMapper;
 import com.victoria.app.web.dto.СashWithdrawalDto;
@@ -70,6 +71,7 @@ public class ClientController {
 
         model.addAttribute("newClientAccount", clientAccountService.getNewClientAccount(bank, client));
         model.addAttribute("cashWithdrawalDto", new СashWithdrawalDto());
+        model.addAttribute("remittanceDto", new RemittanceDto());
 
         return "client_bank_page";
     }
