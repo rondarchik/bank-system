@@ -69,6 +69,7 @@
                         <td>amount</td>
                         <td>remainingMonths</td>
                         <td>startDate</td>
+                        <td>action</td>
                     </tr>
                     <c:forEach var="credit" items="${credits}">
                         <tr>
@@ -79,6 +80,11 @@
                             <td>${credit.amount}</td>
                             <td>${credit.remainingMonths}</td>
                             <td>${credit.startDate}</td>
+                            <td>
+                                <input type="button" value="Approve"
+                                       onclick="location.href='<c:url value="/manager_v1/credit/${credit.id}/approve" />'"
+                                       class="get-button colorTwo">
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>
@@ -102,6 +108,7 @@
                         <td>amount</td>
                         <td>remainingMonths</td>
                         <td>startDate</td>
+                        <td>action</td>
                     </tr>
                     <c:forEach var="installment" items="${installments}">
                         <tr>
@@ -111,6 +118,11 @@
                             <td>${installment.amount}</td>
                             <td>${installment.remainingMonths}</td>
                             <td>${installment.startDate}</td>
+                            <td>
+                                <input type="button" value="Approve"
+                                       onclick="location.href='<c:url value="/manager_v1/installment/${installment.id}/approve" />'"
+                                       class="get-button colorTwo">
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>

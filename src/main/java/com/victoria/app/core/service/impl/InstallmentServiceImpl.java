@@ -29,4 +29,9 @@ public class InstallmentServiceImpl implements InstallmentService {
     public Installment save(Installment installment) {
         return installmentRepository.save(installment);
     }
+
+    @Override
+    public Installment getById(long id) {
+        return installmentRepository.getById(id);
+    }
 }

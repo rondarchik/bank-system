@@ -12,4 +12,6 @@ public interface InstallmentService {
     List<Installment> getAll();
 
     Installment save(Installment installment);
+
+    Installment getById(long id);
 }

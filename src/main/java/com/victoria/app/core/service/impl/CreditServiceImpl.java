@@ -29,4 +29,9 @@ public class CreditServiceImpl implements CreditService {
     public List<Credit> getAll() {
         return creditRepository.findAll();
     }
+
+    @Override
+    public Credit getById(long id) {
+        return creditRepository.getById(id);
+    }
 }

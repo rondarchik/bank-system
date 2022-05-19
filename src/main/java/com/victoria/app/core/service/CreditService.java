@@ -13,4 +13,5 @@ public interface CreditService {
 
     List<Credit> getAll();
 
+    Credit getById(long id);
 }

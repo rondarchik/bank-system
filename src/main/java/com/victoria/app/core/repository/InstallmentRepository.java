@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface InstallmentRepository extends JpaRepository<Installment, Long> {
     List<Installment> getAllByClientAccount(ClientAccount clientAccount);
+
+    Installment getById(long id);
 }

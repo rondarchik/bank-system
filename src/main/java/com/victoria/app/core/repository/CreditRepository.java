@@ -9,4 +9,6 @@ import java.util.List;
 public interface CreditRepository extends JpaRepository<Credit, Long> {
 
     List<Credit> getAllByClientAccount(ClientAccount clientAccount);
+
+    Credit getById(long id);
 }

@@ -2,14 +2,8 @@ package com.victoria.app.web.controller;
 
 import com.victoria.app.core.exceptions.ManagerNotFoundException;
 import com.victoria.app.core.exceptions.UserNotFoundException;
-import com.victoria.app.core.model.Client;
-import com.victoria.app.core.model.Manager;
-import com.victoria.app.core.model.Role;
-import com.victoria.app.core.model.User;
-import com.victoria.app.core.service.ActionLogService;
-import com.victoria.app.core.service.ClientService;
-import com.victoria.app.core.service.ManagerService;
-import com.victoria.app.core.service.UserService;
+import com.victoria.app.core.model.*;
+import com.victoria.app.core.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -24,6 +18,12 @@ public class ManagerController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private InstallmentService installmentService;
+
+    @Autowired
+    private CreditService creditService;
 
     @Autowired
     private ManagerService managerService;
@@ -41,4 +41,24 @@ public class ManagerController {
         userService.save(user);
         return "redirect:/welcome_manager";
     }
+
+    @RequestMapping(value = "/installment/{installmentId}/approve", method = RequestMethod.GET)
+    public String approveInstallment(@PathVariable Long installmentId) {
+        Installment installment = installmentService.getById(installmentId);
+        installment.setApproved(true);
+
+        installmentService.save(installment);
+        return "redirect:/welcome_manager";
+    }
+
+    @RequestMapping(value = "/credit/{creditId}/approve", method = RequestMethod.GET)
+    public String approveCredit(@PathVariable Long creditId) {
+        Credit credit = creditService.getById(creditId);
+        credit.setApproved(true);
+
+        creditService.save(credit);
+        return "redirect:/welcome_manager";
+    }
+
+
 }
