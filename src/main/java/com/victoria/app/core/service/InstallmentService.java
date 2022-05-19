@@ -9,5 +9,7 @@ public interface InstallmentService {
 
     List<Installment> getAllByClientAccount(ClientAccount clientAccount);
 
+    List<Installment> getAll();
+
     Installment save(Installment installment);
 }

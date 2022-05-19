@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -54,6 +55,12 @@ public class UserController {
 
     @Autowired
     private UserClientDtoMapper userClientDtoMapper;
+
+    @Autowired
+    private CreditService creditService;
+
+    @Autowired
+    private InstallmentService installmentService;
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -144,6 +151,18 @@ public class UserController {
 
         model.addAttribute("user", user);
         model.addAttribute("nonActiveClients", userService.getAllNonActiveUserClientsForManager(manager));
+
+        model.addAttribute("credits", creditService.getAll()
+                .stream()
+                .filter(credit -> !credit.isApproved())
+                .filter(installment -> Objects.equals(manager.getBank().getName(), installment.getClientAccount().getBank().getName()))
+                .collect(Collectors.toList()));
+
+        model.addAttribute("installments", installmentService.getAll()
+                .stream()
+                .filter(installment -> !installment.isApproved())
+                .filter(installment -> Objects.equals(manager.getBank().getName(), installment.getClientAccount().getBank().getName()))
+                .collect(Collectors.toList()));
 
         actionLogService.save(new ActionLog("Manager " + authentication.getName() + " is authorized.", new Date()));
         return "welcome_manager";

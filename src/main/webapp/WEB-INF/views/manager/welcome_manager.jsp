@@ -52,4 +52,72 @@
             </table>
         </c:otherwise>
     </c:choose>
+
+    <h2>Unapproved credits:</h2>
+    <div class="div-2">
+        <c:choose>
+            <c:when test="${empty credits}">
+                There are no unapproved credits.
+            </c:when>
+            <c:otherwise>
+                <table border="2">
+                    <tr class="table-header">
+                        <td class="id">Id</td>
+                        <td>accountId</td>
+                        <td>percent</td>
+                        <td>approved</td>
+                        <td>amount</td>
+                        <td>remainingMonths</td>
+                        <td>startDate</td>
+                    </tr>
+                    <c:forEach var="credit" items="${credits}">
+                        <tr>
+                            <td>${credit.id}</td>
+                            <td>${credit.clientAccount.id}</td>
+                            <td>${credit.percent}</td>
+                            <td>${credit.approved}</td>
+                            <td>${credit.amount}</td>
+                            <td>${credit.remainingMonths}</td>
+                            <td>${credit.startDate}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+    <h2>Unapproved installments:</h2>
+    <div class="div-2">
+        <c:choose>
+            <c:when test="${empty installments}">
+                There are no unapproved installments.
+            </c:when>
+            <c:otherwise>
+                <table border="2">
+                    <tr class="table-header">
+                        <td class="id">Id</td>
+                        <td>accountId</td>
+                        <td>approved</td>
+                        <td>amount</td>
+                        <td>remainingMonths</td>
+                        <td>startDate</td>
+                    </tr>
+                    <c:forEach var="installment" items="${installments}">
+                        <tr>
+                            <td>${installment.id}</td>
+                            <td>${installment.clientAccount.id}</td>
+                            <td>${installment.approved}</td>
+                            <td>${installment.amount}</td>
+                            <td>${installment.remainingMonths}</td>
+                            <td>${installment.startDate}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+
 </div>

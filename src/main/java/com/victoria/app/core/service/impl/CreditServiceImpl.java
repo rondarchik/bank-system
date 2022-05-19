@@ -24,4 +24,9 @@ public class CreditServiceImpl implements CreditService {
     public Credit save(Credit credit) {
         return creditRepository.save(credit);
     }
+
+    @Override
+    public List<Credit> getAll() {
+        return creditRepository.findAll();
+    }
 }

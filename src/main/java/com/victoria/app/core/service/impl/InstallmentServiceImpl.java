@@ -21,6 +21,11 @@ public class InstallmentServiceImpl implements InstallmentService {
     }
 
     @Override
+    public List<Installment> getAll() {
+        return installmentRepository.findAll();
+    }
+
+    @Override
     public Installment save(Installment installment) {
         return installmentRepository.save(installment);
     }
