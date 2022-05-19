@@ -108,10 +108,15 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <input type="button" value="Go"
-                                       onclick="location.href='<c:url
-                                               value="/clientAccount/${clientAccount.id}"/>'"
-                                       class="get-button colorTwo">
+                                <c:if test="${!clientAccount.frozen}">
+                                    <input type="button" value="Go"
+                                           onclick="location.href='<c:url
+                                                   value="/clientAccount/${clientAccount.id}"/>'"
+                                           class="get-button colorTwo">
+                                </c:if>
+                                <c:if test="${clientAccount.frozen}">
+                                    not available -> account is frozen
+                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>
